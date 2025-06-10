@@ -1,0 +1,133 @@
+<div class="register-container d-flex align-items-center justify-content-center min-vh-100 bg-light">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-lg">
+            <div class="card-header bg-dark text-white text-center py-4">
+                <h3 class="mb-0"><i class="bi bi-person-plus-fill me-2"></i>REGISTER</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                    <i class="bi bi-check-circle-fill me-2"></i>{{ successMessage }}
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ errorMessage }}
+                </div>
+
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <input type="text" formControlName="name" class="form-control"
+                                   id="name" placeholder="Enter your full name"
+                                   [ngClass]="{'is-invalid': registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched}">
+                            <label for="name">Full Name</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+                                Name is required (minimum 2 characters).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-envelope-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <input type="email" formControlName="email" class="form-control"
+                                   id="email" placeholder="Enter your email"
+                                   [ngClass]="{'is-invalid': registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched}">
+                            <label for="email">Email</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+                                Valid email is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-lock-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <input type="password" formControlName="password" class="form-control"
+                                   id="password" placeholder="Enter password"
+                                   [ngClass]="{'is-invalid': registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched}">
+                            <label for="password">Password</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+                                Password is required (minimum 6 characters).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-lock-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <input type="password" formControlName="confirmPassword" class="form-control"
+                                   id="confirmPassword" placeholder="Confirm password"
+                                   [ngClass]="{'is-invalid': (registrationForm.hasError('mismatch') && registrationForm.get('confirmPassword')?.touched) || (registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched) }">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="(registrationForm.hasError('mismatch') || registrationForm.get('confirmPassword')?.invalid) && registrationForm.get('confirmPassword')?.touched">
+                                Passwords must match and be provided.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-telephone-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <input type="text" formControlName="phone" class="form-control"
+                                   id="phone" placeholder="Enter phone number"
+                                   [ngClass]="{'is-invalid': registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched}">
+                            <label for="phone">Phone Number</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched">
+                                Valid 10-digit phone number is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-person-badge-fill"></i>
+                        </span>
+                        <div class="form-floating">
+                            <select formControlName="roles" class="form-select" id="roles"
+                                    [ngClass]="{'is-invalid': registrationForm.get('roles')?.invalid && registrationForm.get('roles')?.touched}">
+                                <option value="" disabled selected>Select role</option>
+                                <option value="INSTRUCTOR">Instructor</option>
+                                <option value="STUDENT">Student</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
+                            <label for="roles">Role</label>
+                            <div class="invalid-feedback"
+                                 *ngIf="registrationForm.get('roles')?.invalid && registrationForm.get('roles')?.touched">
+                                Role is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-dark btn-lg"
+                                [disabled]="registrationForm.invalid || isLoading">
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            <i class="bi bi-person-plus-fill me-2" *ngIf="!isLoading"></i>
+                            {{ isLoading ? 'Registering...' : 'Register' }}
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        Already have an account? <a routerLink="/login" class="text-decoration-none text-primary fw-bold">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

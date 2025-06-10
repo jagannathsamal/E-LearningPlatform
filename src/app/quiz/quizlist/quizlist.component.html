@@ -1,0 +1,42 @@
+<div class="container mt-5 py-4">
+  <h2 class="text-center mb-5 text-uppercase fw-bold text-primary display-5 animate__animated animate__fadeInDown">
+    <i class="bi bi-patch-question-fill me-3"></i>Quizzes for Course
+  </h2>
+
+  <div *ngIf="quizzes.length > 0; else noQuizzesAvailable" class="row g-4 justify-content-center">
+    <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let quiz of quizzes">
+      <div class="card shadow-lg border-primary h-100 quiz-card-hover animate__animated animate__zoomIn">
+        <div class="card-header bg-primary text-white py-3">
+          <h5 class="card-title mb-0 fs-5 fw-bold">Quiz ID: {{ quiz.quizId }}</h5>
+        </div>
+        <div class="card-body d-flex flex-column p-4">
+          <p class="card-text mb-2"><strong class="text-secondary">Course ID:</strong> <span class="text-muted">{{ quiz.courseId }}</span></p>
+          <p class="mb-4"><strong class="text-secondary">Total Marks:</strong> <span class="badge bg-info text-dark fs-6">{{ quiz.totalMarks }}</span></p>
+          <p class="mb-4"><strong class="text-secondary">Duration:</strong> <span class="badge bg-info text-dark fs-6">{{ quiz.totalMarks }}</span>Min</p>
+
+          <div class="mt-auto d-grid gap-2">
+            <button *ngIf="hasRole('STUDENT')" class="btn btn-success btn-lg rounded-pill" (click)="onAttemptQuiz(quiz.quizId)">
+              <i class="bi bi-play-circle-fill me-2"></i>Attempt Quiz
+            </button>
+
+            <ng-container *ngIf="hasRole('INSTRUCTOR')">
+              <button class="btn btn-warning btn-lg rounded-pill mb-2" (click)="onUpdateQuiz(quiz.quizId)">
+                <i class="bi bi-pencil-square me-2"></i>Update Quiz
+              </button>
+              <button class="btn btn-danger btn-lg rounded-pill" (click)="onDeleteQuiz(quiz.quizId)">
+                <i class="bi bi-trash-fill me-2"></i>Delete Quiz
+              </button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noQuizzesAvailable>
+    <div class="text-center alert alert-info mt-5 p-4 rounded-3 shadow-sm animate__animated animate__fadeIn">
+      <p class="mb-0 fs-5"><i class="bi bi-info-circle-fill me-2"></i>No quizzes available for this course yet.</p>
+    </div>
+  </ng-template>
+</div>
+

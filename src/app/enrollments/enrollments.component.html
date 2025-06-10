@@ -1,0 +1,67 @@
+<!-- For Students -->
+<div *ngIf="hasRole('STUDENT')">
+  <div class="container mt-5 py-4">
+    <h2 class="text-center mb-5 text-uppercase fw-bold text-primary display-5 animate__animated animate__fadeInDown">
+      <i class="bi bi-person-check-fill me-3"></i>My Enrollments
+    </h2>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let enrollment of enrollments">
+        <div class="card shadow-lg border-primary h-100 animate__animated animate__zoomIn">
+          <div class="card-header bg-primary text-white py-3">
+            <h5 class="card-title mb-0 fs-5 fw-bold">{{ enrollment.title }}</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text text-muted flex-grow-1">{{ enrollment.description }}</p>
+            <p class="mb-0"><strong>Category:</strong> <span class="badge bg-info text-dark">{{ enrollment.category }}</span></p>
+          </div>
+          <div class="card-footer bg-light d-flex justify-content-between p-3">
+            <button class="btn btn-primary btn-lg flex-fill me-2 rounded-pill animate-pulse-on-hover"
+                  [routerLink]="['/content', enrollment.courseId]">
+                    <i class="bi bi-play-circle-fill me-2"></i> Start Learning
+            </button>
+            <button class="btn btn-primary btn-sm flex-fill rounded-pill" [routerLink]="['/quizzes', enrollment.courseId]">
+              <i class="bi bi-patch-question-fill me-1"></i>Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!enrollments || enrollments.length === 0" class="col-12 text-center py-5">
+        <div class="alert alert-info shadow-sm rounded-3 animate__animated animate__fadeIn">
+          <h4 class="alert-heading"><i class="bi bi-info-circle-fill me-2"></i>No Enrollments Yet!</h4>
+          <p>It looks like you haven't enrolled in any courses. Explore our <a routerLink="/courses" class="alert-link">Available Courses</a> to get started!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- For Admin -->
+<div *ngIf="hasRole('ADMIN')">
+  <div class="container mt-5 py-4">
+    <h2 class="text-center mb-5 text-uppercase fw-bold text-primary display-5 animate__animated animate__fadeInDown">
+      <i class="bi bi-person-check-fill me-3"></i>All Enrollments
+    </h2>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courseEnrollmentCounts">
+        <div class="card shadow-lg border-primary h-100 animate__animated animate__zoomIn">
+          <div class="card-header bg-primary text-white py-3">
+            <h5 class="card-title mb-0 fs-5 fw-bold">Course ID: {{ course.courseId }}</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text text-muted flex-grow-1">Enrollments: {{ course.count }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!courseEnrollmentCounts || courseEnrollmentCounts.length === 0" class="col-12 text-center py-5">
+        <div class="alert alert-info shadow-sm rounded-3 animate__animated animate__fadeIn">
+          <h4 class="alert-heading"><i class="bi bi-info-circle-fill me-2"></i>No Enrollments Found!</h4>
+          <p>There are no enrollments available at the moment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

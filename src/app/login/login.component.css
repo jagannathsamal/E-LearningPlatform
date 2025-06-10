@@ -1,0 +1,128 @@
+
+        /* General Body Styling */
+        body.bg-dark-subtle {
+            background-color: #f0f2f5 !important; /* Lighter grey background */
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Card Container Centering & Max Width */
+        .max-width-450 {
+            max-width: 450px;
+            width: 90%; /* Responsive width */
+        }
+
+        /* Custom Card Styling */
+        .custom-card {
+            border-radius: 0.75rem !important; /* More rounded corners */
+            overflow: hidden; /* Ensure header rounding is respected */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08); /* Lighter, subtle shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-3px); /* Slightly less lift */
+            box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12); /* Slightly deeper shadow */
+        }
+
+        /* Card Header Styling */
+        .card-header.bg-dark {
+            background-color: #343a40 !important; /* Darker header */
+            border-bottom: none; /* Remove default border */
+            border-top-left-radius: 0.75rem !important;
+            border-top-right-radius: 0.75rem !important;
+            padding: 2.5rem 1.5rem; /* More vertical padding */
+        }
+
+        .card-header h3 {
+            letter-spacing: 1px; /* Spacing for title */
+        }
+
+        /* Input Group Text */
+        .input-group-text {
+            background-color: #e9ecef !important; /* Light grey background for icons */
+            color: #495057 !important; /* Darker icon color */
+            border: 1px solid #ced4da !important; /* Default border color */
+            border-right: none !important; /* Remove right border */
+            border-radius: 0.375rem 0 0 0.375rem; /* Match input styling */
+        }
+
+        /* Form Floating Input Adjustments */
+        .form-floating > .form-control-lg {
+            height: calc(3.5rem + 2px); /* Adjust height for larger inputs */
+            padding-top: 1.625rem;
+            padding-bottom: 0.625rem;
+            border-left: none !important; /* Remove left border */
+        }
+
+        .form-floating > label {
+            padding-top: 1rem; /* Adjust label position */
+            padding-left: 0.8rem;
+            color: #6c757d; /* Muted label color */
+        }
+
+        /* Custom Input Focus Effect */
+        .form-control.custom-input:focus {
+            border-color: #0d6efd !important; /* Bootstrap primary blue on focus */
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+            border-left: none !important; /* Keep left border removed */
+        }
+
+        /* Validation Feedback */
+        .invalid-feedback {
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            color: #dc3545; /* Standard danger color */
+        }
+
+        /* Custom Primary Button */
+        .custom-btn {
+            background-color: #0d6efd !important; /* Bootstrap primary blue */
+            border-color: #0d6efd !important;
+            padding: 0.75rem 1.5rem; /* More padding */
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .custom-btn:hover {
+            background-color: #0b5ed7 !important; /* Darker blue on hover */
+            transform: translateY(-1px); /* Slight lift */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none; /* Remove lift when disabled */
+            box-shadow: none;
+        }
+
+        /* Custom Outline Button */
+        .custom-btn-outline {
+            border-color: #6c757d !important; /* Secondary border color */
+            color: #6c757d !important; /* Secondary text color */
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .custom-btn-outline:hover {
+            background-color: #6c757d !important; /* Fill on hover */
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        .custom-btn-outline:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Spinner Color */
+        .spinner-border.text-white {
+            color: #fff !important;
+        }

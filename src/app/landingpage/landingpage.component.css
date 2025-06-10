@@ -1,0 +1,22 @@
+/* src/app/home/home.component.css */
+
+.hero-section {
+    /* Define the gradient here */
+    background: linear-gradient(to right, #007bff, #6610f2); /* Example: Bootstrap Primary Blue to a deep Violet */
+    min-height: 500px; /* Ensures it takes up sufficient vertical space */
+    display: flex;
+    align-items: center; /* Vertically centers content */
+    justify-content: center; /* Horizontally centers content */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow to text for readability */
+}
+
+/* Other styles for your home component (from previous suggestions) */
+.card-img-top {
+    height: 200px; /* Fixed height for consistent card image size */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+}

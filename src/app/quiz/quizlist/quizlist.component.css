@@ -1,0 +1,101 @@
+
+  /* General body styling */
+  body {
+    background-color: #f8f9fa; /* Light background for contrast */
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Main title styling */
+  h2.display-5 {
+    letter-spacing: 1px;
+    font-size: 2.5rem; /* Larger main title */
+  }
+
+  /* Quiz Card Styling */
+  .quiz-card-hover {
+    border-radius: 0.75rem !important; /* More rounded main cards */
+    overflow: hidden; /* Ensures header rounding is respected */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .quiz-card-hover:hover {
+    transform: translateY(-5px); /* Lift card slightly */
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+  }
+
+  .card-header.bg-primary {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for headers */
+    border-top-left-radius: 0.75rem !important;
+    border-top-right-radius: 0.75rem !important;
+  }
+
+  .card-body .card-text strong {
+    font-weight: 600; /* Make strong tags bolder */
+  }
+
+  /* Badge styling for Total Marks */
+  .badge.bg-info.text-dark {
+    padding: 0.5em 0.8em;
+    border-radius: 0.3rem;
+    font-weight: 700;
+    margin-left: 5px; /* Slight margin from the text */
+  }
+
+  /* Button Styling */
+  .btn-lg.rounded-pill {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-lg.rounded-pill:hover {
+    transform: translateY(-2px); /* Slight lift on button hover */
+  }
+
+  /* Specific button colors for better differentiation */
+  .btn-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+  }
+  .btn-success:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+  }
+
+  .btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important; /* Dark text for warning button */
+  }
+  .btn-warning:hover {
+    background-color: #e0a800 !important;
+    border-color: #d39e00 !important;
+  }
+
+  .btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+  }
+  .btn-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+  }
+
+  /* No Quizzes Available Message */
+  .alert-info {
+    border-color: #b8daff;
+    color: #0c5460;
+    background-color: #d1ecf1;
+  }
+
+  /* Animations */
+  .animate__animated.animate__fadeInDown {
+    animation-duration: 0.8s;
+  }
+  .animate__animated.animate__zoomIn {
+    animation-duration: 0.6s;
+  }
+  .animate__animated.animate__fadeIn {
+    animation-duration: 0.6s;
+  }

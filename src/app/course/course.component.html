@@ -1,0 +1,212 @@
+<div class="container mt-5 py-4">
+  <h2 class="text-center mb-5 text-uppercase fw-bold text-primary display-5 animate__animated animate__fadeInDown">
+    <i class="bi bi-book-half me-3"></i>Course Management
+  </h2>
+
+  <!-- Add Course Form -->
+  <div *ngIf="hasRole('ADMIN') || hasRole('INSTRUCTOR')" class="card shadow-lg mb-5 border-primary animate__animated animate__fadeInUp">
+    <div class="card-header bg-primary text-white py-3">
+      <h4 class="mb-0 fs-5"><i class="bi bi-plus-circle-fill me-2"></i>Add New Course</h4>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="courseForm" (ngSubmit)="onAddCourse()">
+        <div class="mb-3 form-floating">
+          <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter course title" />
+          <label for="title" class="form-label">Title</label>
+          <div *ngIf="courseForm.get('title')?.invalid && courseForm.get('title')?.touched" class="text-danger">
+            <small *ngIf="courseForm.get('title')?.errors?.['required']">Title is required.</small>
+            <small *ngIf="courseForm.get('title')?.errors?.['minlength']">Title must be at least 5 characters long.</small>
+            <small *ngIf="courseForm.get('title')?.errors?.['maxlength']">Title cannot exceed 100 characters.</small>
+          </div>
+        </div>
+
+        <div class="mb-3 form-floating">
+          <textarea id="description" class="form-control" formControlName="description" placeholder="Enter course description" style="height: 100px"></textarea>
+          <label for="description" class="form-label">Description</label>
+          <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched" class="text-danger">
+            <small *ngIf="courseForm.get('description')?.errors?.['required']">Description is required.</small>
+            <small *ngIf="courseForm.get('description')?.errors?.['minlength']">Description must be at least 20 characters long.</small>
+            <small *ngIf="courseForm.get('description')?.errors?.['maxlength']">Description cannot exceed 500 characters.</small>
+          </div>
+        </div>
+
+        <div class="mb-3 form-floating">
+          <input type="text" id="category" class="form-control" formControlName="category" placeholder="Enter course category" />
+          <label for="category" class="form-label">Category</label>
+          <div *ngIf="courseForm.get('category')?.invalid && courseForm.get('category')?.touched" class="text-danger">
+            <small *ngIf="courseForm.get('category')?.errors?.['required']">Category is required.</small>
+            <small *ngIf="courseForm.get('category')?.errors?.['minlength']">Category must be at least 3 characters long.</small>
+            <small *ngIf="courseForm.get('category')?.errors?.['maxlength']">Category cannot exceed 50 characters.</small>
+          </div>
+        </div>
+
+        <div class="mb-3 form-floating">
+          <input type="text" id="instructorName" class="form-control" formControlName="instructorName" readonly />
+          <label for="instructorName" class="form-label">Instructor Name</label>
+        </div>
+
+        <div class="mb-4 form-floating">
+          <textarea id="content" class="form-control" formControlName="content" placeholder="Enter course content" style="height: 150px"></textarea>
+          <label for="content" class="form-label">Content</label>
+          <div *ngIf="courseForm.get('content')?.invalid && courseForm.get('content')?.touched" class="text-danger">
+            <small *ngIf="courseForm.get('content')?.errors?.['required']">Content is required.</small>
+            <small *ngIf="courseForm.get('content')?.errors?.['minlength']">Content must be at least 50 characters long.</small>
+            <small *ngIf="courseForm.get('content')?.errors?.['maxlength']">Content cannot exceed 1000 characters.</small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 btn-lg rounded-pill" [disabled]="courseForm.invalid">
+          <i class="bi bi-cloud-arrow-up-fill me-2"></i>Add Course
+        </button>
+      </form>
+    </div>
+  </div>
+  
+  <div *ngIf="selectedCourse" class="card shadow-lg mb-5 border-warning animate__animated animate__fadeInUp">
+    <div class="card-header bg-warning text-dark py-3">
+      <h4 class="mb-0 fs-5"><i class="bi bi-pencil-square me-2"></i>Edit Course</h4>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="updateCourseForm" (ngSubmit)="onUpdateCourse()">
+        <div class="mb-3 form-floating">
+          <input type="text" id="editTitle" class="form-control" formControlName="title" placeholder="Enter course title" />
+          <label for="editTitle" class="form-label">Title</label>
+        </div>
+        <div class="mb-3 form-floating">
+          <textarea id="editDescription" class="form-control" formControlName="description" placeholder="Enter course description" style="height: 100px"></textarea>
+          <label for="editDescription" class="form-label">Description</label>
+        </div>
+        <div class="mb-3 form-floating">
+          <input type="text" id="editCategory" class="form-control" formControlName="category" placeholder="Enter course category" />
+          <label for="editCategory" class="form-label">Category</label>
+        </div>
+        <div class="mb-3 form-floating">
+          <input type="text" id="editInstructorName" class="form-control" formControlName="instructorName" readonly />
+          <label for="editInstructorName" class="form-label">Instructor Name</label>
+        </div>
+        <div class="mb-4 form-floating">
+          <textarea id="editContent" class="form-control" formControlName="content" placeholder="Enter course content" style="height: 150px"></textarea>
+          <label for="editContent" class="form-label">Content</label>
+        </div>
+        <button type="submit" class="btn btn-success w-100 btn-lg rounded-pill mb-3" [disabled]="updateCourseForm.invalid">
+          <i class="bi bi-check-circle-fill me-2"></i>Update Course
+        </button>
+        <button type="button" class="btn btn-secondary w-100 btn-lg rounded-pill" (click)="selectedCourse = null">
+          <i class="bi bi-x-circle-fill me-2"></i>Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <h3 class="text-center mb-4 text-secondary animate__animated animate__fadeIn">Available Courses</h3>
+  <div class="row g-4 justify-content-center">
+    <ng-container *ngIf="hasRole('ADMIN')">
+      <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses">
+        <div class="card shadow-sm border-primary h-100 animate__animated animate__zoomIn course-card-hover">
+          <div class="card-header bg-primary text-white py-3">
+            <h5 class="card-title mb-0 fs-5 fw-bold">{{ course.title }}</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text text-muted flex-grow-1">{{ course.description }}</p>
+            <p class="mb-1"><strong>Category:</strong> <span class="badge bg-info text-dark">{{ course.category }}</span></p>
+            <p class="mb-0"><strong>Instructor:</strong> <span class="text-secondary">{{ course.instructorName }}</span></p>
+          </div>
+          <div class="card-footer bg-light d-flex justify-content-between p-3">
+            <button class="btn btn-warning btn-sm flex-fill me-2" (click)="onEditCourse(course)"><i class="bi bi-pencil"></i> Edit</button>
+            <button class="btn btn-danger btn-sm flex-fill" (click)="onDeleteCourse(course.courseId)"><i class="bi bi-trash"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="hasRole('INSTRUCTOR')">
+      <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses">
+        <div *ngIf="course.instructorName === username" class="card shadow-sm border-primary h-100 animate__animated animate__zoomIn course-card-hover">
+          <div class="card-header bg-primary text-white py-3">
+            <h5 class="card-title mb-0 fs-5 fw-bold">{{ course.title }}</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text text-muted flex-grow-1">{{ course.description }}</p>
+            <p class="mb-1"><strong>Category:</strong> <span class="badge bg-info text-dark">{{ course.category }}</span></p>
+            <p class="mb-0"><strong>Instructor:</strong> <span class="text-secondary">{{ course.instructorName }}</span></p>
+          </div>
+          <div class="card-footer bg-light d-flex flex-wrap justify-content-center p-3">
+            <button class="btn btn-warning btn-sm flex-fill me-2 mb-2" (click)="onEditCourse(course)"><i class="bi bi-pencil"></i> Edit</button>
+            <button class="btn btn-danger btn-sm flex-fill mb-2" (click)="onDeleteCourse(course.courseId)"><i class="bi bi-trash"></i> Delete</button>
+            <button class="btn btn-info btn-sm flex-fill me-2 mb-2" (click)="onViewEngagement(course.courseId)"><i class="bi bi-graph-up"></i> Engagement</button>
+            <button class="btn btn-success btn-sm flex-fill me-2 mb-2" (click)="onCreateQuiz(course.courseId)"><i class="bi bi-patch-question"></i> Create Quiz</button>
+            <button class="btn btn-success btn-sm flex-fill mb-2" (click)="onManageQuiz(course.courseId)"><i class="bi bi-patch-question"></i> Manage Quiz</button>
+          </div>
+
+          <div *ngIf="selectedCourseId === course.courseId" class="card-footer bg-light border-top mt-3 p-3 animate__animated animate__fadeIn">
+            <h5 class="text-primary mb-3"><i class="bi bi-people-fill me-2"></i>Engagement Details</h5>
+            <p class="mb-2"><strong>Total Enrollments:</strong> <span class="badge bg-primary fs-6">{{ enrollmentCount }}</span></p>
+            <div *ngIf="enrollments.length > 0; else noEnrollments">
+              <ul class="list-group list-group-flush border rounded-3 overflow-auto" style="max-height: 150px;">
+  
+              </ul>
+            </div>
+            <ng-template #noEnrollments>
+              <p class="text-muted fst-italic">No enrollments found for this course yet.</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="hasRole('STUDENT')">
+      <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses">
+        <div class="card shadow-sm border-primary h-100 animate__animated animate__zoomIn course-card-hover">
+          <div class="card-header bg-primary text-white py-3">
+            <h5 class="card-title mb-0 fs-5 fw-bold">{{ course.title }}</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="card-text text-muted flex-grow-1">{{ course.description }}</p>
+            <p class="mb-1"><strong>Category:</strong> <span class="badge bg-info text-dark">{{ course.category }}</span></p>
+            <p class="mb-0"><strong>Instructor:</strong> <span class="text-secondary">{{ course.instructorName }}</span></p>
+          </div>
+          <div class="card-footer bg-light p-3">
+            <button class="btn btn-success btn-lg w-100 rounded-pill" (click)="onEnroll(course)">
+              <i class="bi bi-person-plus-fill me-2"></i>Enroll
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<style>
+  /* Custom CSS for enhanced hover effect */
+  .course-card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .course-card-hover:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* Emphasize shadow */
+  }
+
+  /* Adjust badge appearance */
+  .badge.bg-info.text-dark {
+    padding: 0.4em 0.7em;
+    border-radius: 0.3rem;
+    font-weight: 600;
+  }
+
+  /* Improve button spacing and alignment */
+  .card-footer.d-flex.flex-wrap > .btn {
+    margin-right: 0.5rem; /* Add some right margin to buttons */
+    margin-bottom: 0.5rem; /* Add some bottom margin to buttons */
+  }
+
+  /* Ensure the last button in a row doesn't have right margin */
+  .card-footer.d-flex.flex-wrap > .btn:last-child {
+    margin-right: 0;
+  }
+
+  /* Make sure buttons fill available space evenly */
+  .card-footer.d-flex.justify-content-between > .btn {
+    flex-grow: 1;
+  }
+</style>

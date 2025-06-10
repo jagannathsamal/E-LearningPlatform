@@ -1,0 +1,62 @@
+<body class="bg-dark-subtle">
+    <div class="container py-5 vh-100 d-flex justify-content-center align-items-center">
+        <div class="card-container animate__animated animate__zoomIn max-width-450">
+            <div class="card shadow-lg border-0 rounded-4 custom-card">
+                <div class="card-header bg-dark text-white text-center py-4 rounded-top-4">
+                    <h3 class="mb-0 display-6 fw-bold"><i class="bi bi-person-circle me-3"></i>ACCOUNT LOGIN</h3>
+                </div>
+                <div class="card-body p-5">
+                    <div class="alert alert-danger alert-dismissible fade show animate__animated animate__shakeX" role="alert" [style.display]="loginFailed ? 'block' : 'none'">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        {{ errorMessage || 'Invalid username or password!' }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <form id="loginForm" #loginForm="ngForm" (ngSubmit)="validate(loginForm)">
+                        <div class="input-group mb-4 custom-input-group">
+                            <span class="input-group-text bg-secondary text-white border-secondary">
+                                <i class="bi bi-person-fill fs-5"></i>
+                            </span>
+                            <div class="form-floating">
+                                <input type="text" [(ngModel)]="username" name="username" class="form-control form-control-lg custom-input" id="username" placeholder="Enter username"
+                                    required #usernameInput="ngModel" [disabled]="isLoading">
+                                <label for="username">Username</label>
+                            </div>
+                            <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="invalid-feedback d-block animate__animated animate__headShake">
+                                Please enter your username.
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-4 custom-input-group">
+                            <span class="input-group-text bg-secondary text-white border-secondary">
+                                <i class="bi bi-key-fill fs-5"></i>
+                            </span>
+                            <div class="form-floating">
+                                <input type="password" [(ngModel)]="password" name="password" class="form-control form-control-lg custom-input" id="password" placeholder="Enter password"
+                                    required #passwordInput="ngModel" [disabled]="isLoading">
+                                <label for="password">Password</label>
+                            </div>
+                            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="invalid-feedback d-block animate__animated animate__headShake">
+                                Please enter your password.
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg custom-btn" [disabled]="loginForm.invalid || isLoading">
+                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2 text-white" role="status" aria-hidden="true"></span>
+                                <i class="bi bi-box-arrow-in-right me-2" *ngIf="!isLoading"></i>
+                                {{ isLoading ? 'AUTHENTICATING...' : 'LOGIN' }}
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a routerLink="/register" class="btn btn-outline-secondary custom-btn-outline" [class.disabled]="isLoading">
+                                <i class="bi bi-person-plus-fill me-2"></i>REGISTER NEW ACCOUNT
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,75 @@
+/* src/app/app.component.css */
+
+/* Ensure the app takes full height and main content expands */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex-grow: 1; /* Allows router-outlet content to grow */
+  }
+  
+  /* Footer specific styles */
+  .footer {
+    background-color: #212529 !important; /* Dark background, adjust if your nav is different */
+    color: #f8f9fa; /* Light text color */
+  }
+  
+  .footer .footer-logo {
+    max-width: 120px; /* Adjust logo size */
+    height: auto;
+    filter: invert(100%); /* Optional: if your logo is dark, this makes it white */
+  }
+  
+  .footer h6 {
+    color: #ffffff; /* Headings in white */
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer .list-unstyled li a {
+    color: #adb5bd !important; /* Muted text for links */
+    transition: color 0.3s ease;
+  }
+  
+  .footer .list-unstyled li a:hover {
+    color: #007bff !important; /* Primary color on hover */
+    text-decoration: underline;
+  }
+  
+  .footer .social-links a {
+    color: #dee2e6; /* Social icon color */
+    transition: color 0.3s ease;
+  }
+  
+  .footer .social-links a:hover {
+    color: #007bff; /* Primary color on social icon hover */
+  }
+  
+  .footer .newsletter-form .form-control {
+    border-radius: 0.25rem;
+    border: 1px solid #495057;
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+  
+  .footer .newsletter-form .form-control::placeholder {
+    color: #adb5bd;
+  }
+  
+  .footer .newsletter-form .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .footer .newsletter-form .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  /* General app styles (from previous steps, keep if they exist) */
+  .dropdown-menu {
+  right: 0;
+  left: auto;
+  }

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Course Content</h2>
+  
+    <div *ngIf="contentLink; else noContent">
+      <iframe
+        *ngIf="isEmbeddable(contentLink)"
+        [src]="sanitizedContentLink"
+        width="100%"
+        height="500px"
+        frameborder="0"
+        allowfullscreen
+        class="border rounded shadow-sm"
+      ></iframe>
+  
+      <div *ngIf="!isEmbeddable(contentLink)" class="text-center">
+        <p class="text-muted">This content cannot be embedded due to restrictions.</p>
+        <a [href]="contentLink" target="_blank" class="btn btn-primary">Open Content</a>
+      </div>
+    </div>
+  
+    <ng-template #noContent>
+      <p class="text-center text-muted">No content available for this course.</p>
+    </ng-template>
+  </div>
+  

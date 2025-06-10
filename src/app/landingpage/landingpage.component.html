@@ -1,0 +1,241 @@
+<div class="container-fluid p-0">
+  <section class="hero-section text-white text-center py-5 position-relative overflow-hidden"
+    style="background: linear-gradient(to right, #007bff, #6610f2); min-height: 550px; display: flex; align-items: center; justify-content: center;">
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6zm30 0V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); opacity: 0.2;">
+    </div>
+    <div class="container position-relative z-index-1">
+      <h1 class="display-2 fw-bold mb-4 animate__animated animate__fadeInDown">Unlock Your Potential with <span
+          class="text-warning">SKILLUP</span></h1>
+      <p class="lead fs-4 mb-5 animate__animated animate__fadeInUp animate__delay-0.5s">
+        Discover thousands of cutting-edge courses taught by <span class="fw-bold">world-class expert instructors</span>.
+        Learn new skills, advance your career, or simply explore your passions with us.
+      </p>
+      <a routerLink="/courses"
+        class="btn btn-warning btn-lg me-3 animate__animated animate__zoomIn animate__delay-1s shadow-sm">Explore
+        Courses</a>
+      <!-- <a routerLink="/register"
+        class="btn btn-outline-light btn-lg animate__animated animate__zoomIn animate__delay-1s shadow-sm">Join for
+        Free</a> -->
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <div class="w-100" style="height: 500px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.15);">
+      <div id="courseCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="/fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg"
+              alt="Programming" class="d-block w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+              <h5 class="fs-4">Master Programming Languages</h5>
+              <p class="fs-6">Dive deep into Python, Java, JavaScript, and more to build robust applications.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/james-harrison-vpOeXr5wmR4-unsplash.jpg"
+              alt="Web Development" class="d-block w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+              <h5 class="fs-4">Build Stunning Web Applications</h5>
+              <p class="fs-6">From frontend to backend, learn everything you need to create captivating web experiences.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/juanjo-jaramillo-mZnx9429i94-unsplash.jpg"
+              alt="Data Science" class="d-block w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+              <h5 class="fs-4">Explore the World of Data Science</h5>
+              <p class="fs-6">Uncover powerful insights with advanced data analysis and machine learning techniques.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  ---
+
+  <!-- <section class="container my-5 text-center">
+    <h2 class="display-4 fw-bold mb-4">Our Most <span class="text-primary">Popular Courses</span></h2>
+    <p class="lead text-muted mb-5">Handpicked courses that our students love. Start your learning journey with the best!</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card h-100 shadow-lg border-0 transform-on-hover">
+          <img
+            src="https://images.unsplash.com/photo-1542831371-29b0f74f9457?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="card-img-top object-fit-cover" alt="Web Development Course" style="height: 200px;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-primary fs-4">Full-Stack Web Development Bootcamp</h5>
+            <p class="card-text text-muted flex-grow-1">Build dynamic web applications from scratch using modern
+              technologies like Angular, Node.js, and MongoDB.</p>
+            <div class="mt-auto">
+              <a routerLink="/courses" class="btn btn-outline-primary rounded-pill px-4">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-lg border-0 transform-on-hover">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af564?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="card-img-top object-fit-cover" alt="Machine Learning Course" style="height: 200px;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-primary fs-4">Introduction to Machine Learning</h5>
+            <p class="card-text text-muted flex-grow-1">Understand the core concepts of AI and machine learning. Start
+              building intelligent systems today!</p>
+            <div class="mt-auto">
+              <a routerLink="/courses" class="btn btn-outline-primary rounded-pill px-4">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-lg border-0 transform-on-hover">
+          <img
+            src="https://images.unsplash.com/photo-1549445209-1af08481d683?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="card-img-top object-fit-cover" alt="Digital Marketing Course" style="height: 200px;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-primary fs-4">Mastering Digital Marketing Strategies</h5>
+            <p class="card-text text-muted flex-grow-1">Learn SEO, SEM, social media marketing, and content creation to
+              boost your brand online.</p>
+            <div class="mt-auto">
+              <a routerLink="/courses" class="btn btn-outline-primary rounded-pill px-4">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5">
+      <a routerLink="/courses" class="btn btn-lg btn-success shadow-lg px-5 py-3 rounded-pill">View All Courses <i
+          class="bi bi-arrow-right"></i></a>
+    </div>
+  </section> -->
+
+  ---
+
+  <section class="bg-light py-5">
+    <div class="container text-center">
+      <h2 class="display-4 fw-bold mb-4">Why Choose <span class="text-info">SKILLUP</span>?</h2>
+      <div class="row g-4 mt-4">
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-3 shadow-hover h-100 d-flex flex-column justify-content-between">
+            <i class="bi bi-award-fill text-warning fs-1 mb-3"></i>
+            <h3 class="fw-bold">Expert Instructors</h3>
+            <p class="text-muted mb-0">Learn from industry leaders and passionate educators with real-world experience.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-3 shadow-hover h-100 d-flex flex-column justify-content-between">
+            <i class="bi bi-infinity text-primary fs-1 mb-3"></i>
+            <h3 class="fw-bold">Lifetime Access</h3>
+            <p class="text-muted mb-0">Enroll once, and enjoy unlimited, lifetime access to all course materials and updates.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-3 shadow-hover h-100 d-flex flex-column justify-content-between">
+            <i class="bi bi-bar-chart-fill text-info fs-1 mb-3"></i>
+            <h3 class="fw-bold">Career Advancement</h3>
+            <p class="text-muted mb-0">Gain practical, in-demand skills directly applicable to today's competitive job market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<router-outlet></router-outlet>
+
+<style>
+  /* Custom styles for enhanced visual appeal */
+
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 75%);
+    z-index: 0;
+  }
+
+  .carousel-item img {
+    filter: brightness(0.7); /* Slightly darken images for better text contrast */
+    transition: filter 0.5s ease;
+  }
+
+  .carousel-item.active img {
+    filter: brightness(1); /* Restore brightness on active slide */
+  }
+
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6) !important; /* Make caption background more opaque */
+    padding: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    backdrop-filter: blur(5px); /* Add a subtle blur effect */
+  }
+
+  .card.transform-on-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card.transform-on-hover:hover {
+    transform: translateY(-8px) scale(1.02); /* Lift and slightly enlarge on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important; /* More pronounced shadow on hover */
+  }
+
+  .shadow-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .shadow-hover:hover {
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-5px);
+  }
+
+  .btn-warning, .btn-success {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-outline-light {
+    border-width: 2px;
+  }
+
+  .btn-outline-primary {
+    border-width: 2px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example font family */
+  }
+
+  p {
+    font-family: 'Open Sans', Arial, sans-serif; /* Example font family */
+  }
+</style>
