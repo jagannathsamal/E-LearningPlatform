@@ -1,0 +1,32 @@
+
+  .course-card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .course-card-hover:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* Emphasize shadow */
+  }
+
+  /* Adjust badge appearance */
+  .badge.bg-info.text-dark {
+    padding: 0.4em 0.7em;
+    border-radius: 0.3rem;
+    font-weight: 600;
+  }
+
+  /* Improve button spacing and alignment */
+  .card-footer.d-flex.flex-wrap > .btn {
+    margin-right: 0.5rem; /* Add some right margin to buttons */
+    margin-bottom: 0.5rem; /* Add some bottom margin to buttons */
+  }
+
+  /* Ensure the last button in a row doesn't have right margin */
+  .card-footer.d-flex.flex-wrap > .btn:last-child {
+    margin-right: 0;
+  }
+
+  /* Make sure buttons fill available space evenly */
+  .card-footer.d-flex.justify-content-between > .btn {
+    flex-grow: 1;
+  }

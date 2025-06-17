@@ -29,31 +29,18 @@ export class NavbarComponent {
     return roles ? roles.split(',').includes(role) : false;
   }
   
-  onSearch(): void {
-    if (this.searchQuery.trim()) {
-      // Fetch search results from the backend
-      this.http.get(`http://localhost:9091/search?q=${this.searchQuery}`).subscribe({
-        next: (results: any) => {
-          this.searchResults = results;
-          console.log('Search Results:', this.searchResults); // Debug log
-        },
-        error: (error) => {
-          console.error('Error fetching search results:', error);
-        }
-      });
-    }
-  }
+  
 
   logout() {
     this.isLoggedIn = false
-    localStorage.removeItem('jwtToken'); // Removes the stored token
-    localStorage.removeItem('username'); // Removes the stored username
-    localStorage.removeItem('isLoggedIn'); // Removes the login state
-    localStorage.removeItem('userId'); // Removes the user ID if stored
-    localStorage.removeItem('roles'); // Removes the user role if stored
+    localStorage.removeItem('jwtToken'); 
+    localStorage.removeItem('username'); 
+    localStorage.removeItem('isLoggedIn'); 
+    localStorage.removeItem('userId'); 
+    localStorage.removeItem('roles'); 
     console.log("User logged out successfully.");
     this.router.navigate(['/login']).then(() => {
-      location.reload(); // Ensures header updates immediately
+      location.reload();
     });
   }
   

@@ -57,7 +57,7 @@ export class LoginComponent {
           } else if (error.status === 0) {
             this.errorMessage = 'Network error. Please check if the server is running.';
           } else {
-            this.errorMessage = 'Invalid Username or Password!';
+            this.errorMessage = 'Login failed. Please try again.';
           }
         }
       });
